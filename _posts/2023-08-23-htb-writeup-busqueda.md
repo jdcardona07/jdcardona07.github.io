@@ -25,18 +25,37 @@ tags:
 Busqueda es una máquina Linux de dificultad fácil que implica explotar una vulnerabilidad de inyección de comandos presente en un módulo de Python. Al aprovechar esta vulnerabilidad, obtenemos acceso a nivel de usuario a la máquina. A escalar privilegios a root, descubrimos credenciales dentro de un archivo de configuración de Git, lo que nos permite iniciar sesión en un local Servicio de gitea. Además, descubrimos que se puede ejecutar un script de verificación del sistema con privilegios de root. por un usuario específico. Al utilizar este script, enumeramos los contenedores Docker que revelan las credenciales para el
 cuenta Gitea del usuario administrador. Análisis adicional del código fuente del script de verificación del sistema en un El repositorio de Git revela un medio para explotar una referencia de ruta relativa, lo que nos permite la ejecución remota de código (RCE) con privilegios de root.
 
-## 1. Enumeración
+# 1. Enumeración
    
 Iniciamos con un escaneando de puertos de la máquina con Nmap.
 
-# Portscan
+## Portscan
 Encontramos dos puertos abiertos. 
 •	22 de SSH 
 •	80 de HTTP
 
 ![](/assets/images/htb-writeup-busqueda/portscan.png)
 
+Realizamos un “Curl” para obtener información adicional.
+
+![](/assets/images/htb-writeup-busqueda/curl.png)
+
+Agregamos el dominio encontrado en el archivo “/etc/hosts” para que sepa a donde resolver cuando apuntemos a él.
+
+![](/assets/images/htb-writeup-busqueda/hosts.png)
+
 ## Website
+Navegamos hasta el servicio web. Encontramos que es una aplicación que se utiliza para realizar búsquedas con diferentes buscadores.
+•	https://github.com/ArjunSharda/Searchor.
+
+![](/assets/images/htb-writeup-busqueda/web1.png)
+
+## Burp tSute
+Vamos a realizar una búsqueda cualquiera e interceptamos la petición con BurpSuite.
+
+![](/assets/images/htb-writeup-busqueda/burp1.png)
+
+# 2. Explotación
 
 The Delivery website is pretty basic, there's a link to a vhost called helpdesk.delivery.htb and a contact us section. We'll add this entry to our local host before proceeding further.
 
