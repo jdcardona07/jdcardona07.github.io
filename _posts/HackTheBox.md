@@ -1,7 +1,7 @@
 ---
 layout: single
 title: Hack The Box
-date: 2018-11-18
+date: 2024-11-18
 classes: wide
 header:
   teaser: /assets/images/htb.png
