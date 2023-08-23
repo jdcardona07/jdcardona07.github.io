@@ -16,6 +16,7 @@ tags:
   - burpsuite
   - Command Injection
   - python
+  - RCE
   
 ---
 
