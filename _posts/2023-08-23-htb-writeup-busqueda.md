@@ -11,13 +11,12 @@ header:
   icon: /assets/images/hackthebox.webp
 categories:
   - hackthebox
-  - infosec
+ 
 tags:  
-  - osticket
-  - mysql
-  - mattermost
-  - hashcat
-  - rules
+  - burpsuite
+  - Command Injection
+  - python
+  
 ---
 
 ![](/assets/images/htb-writeup-busqueda/busqueda_logo.png)
