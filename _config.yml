@@ -19,7 +19,7 @@ locale                   : "en-US"
 title                    : "jscardona07.io"
 title_separator          : "-"
 name                     : "Jdcardona"
-description              : "Posts about security, CTFs and networking"
+description              : "Posts sobre ciberseguridad, CTFs and networking"
 url                      : "https://jdcardona07.github.io/" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "slemire/slemire.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -103,7 +103,7 @@ analytics:
 author:
   name             : "meteoro"
   avatar           : "/assets/images/avatar.png"
-  bio              : "Pentester, CTF player<br>HackTheBox ATeam"
+  bio              : "Ingeniero de sistemas, Especialista en seguridad informatica y Máster en Ciberseguridad"
   location         : "Colombia"
   email            : "juandavid.cardona53@gmail.com"
   uri              :
@@ -117,7 +117,7 @@ author:
   github           : "slemire"
   gitlab           :
   google_plus      :
-  keybase          : "snowscan"
+  keybase          : "meteoro"
   instagram        :
   lastfm           :
   linkedin         : # "john-doe-12345678" (the last part of your profile url, e.g. https://www.linkedin.com/in/john-doe-12345678)
