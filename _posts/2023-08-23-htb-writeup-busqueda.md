@@ -48,12 +48,12 @@ Agregamos el dominio encontrado en el archivo “/etc/hosts” para que sepa a d
 Navegamos hasta el servicio web. Encontramos que es una aplicación que se utiliza para realizar búsquedas con diferentes buscadores.
 •	https://github.com/ArjunSharda/Searchor.
 
-![](/assets/images/htb-writeup-busqueda/web1.png)
+![](/assets/images/htb-writeup-busqueda/web.png)
 
-## Burp tSute
+## Burp Suite
 Vamos a realizar una búsqueda cualquiera e interceptamos la petición con BurpSuite.
 
-![](/assets/images/htb-writeup-busqueda/burp1.png)
+![](/assets/images/htb-writeup-busqueda/burp.png)
 
 # 2. Explotación
 
