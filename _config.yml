@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "haxor" # "air", "aqua", "contrast", "dark", "dirt", 
 
 # Site Settings
 locale                   : "en-US"
-title                    : "jscardona07.io"
+title                    : "Posts Ciberseguridad"
 title_separator          : "-"
 name                     : "Jdcardona"
 description              : "Posts sobre ciberseguridad, CTFs and networking"
