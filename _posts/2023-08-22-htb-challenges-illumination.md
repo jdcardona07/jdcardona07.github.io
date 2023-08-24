@@ -2,7 +2,7 @@
 layout: single
 title: Illumination - Challenges - Forensics - Hack The Box
 excerpt: "Un desarrollador junior acaba de cambiarse a una nueva plataforma de control de código fuente. ¿Puedes encontrar la ficha secreta?"
-date: 2023-08-23
+date: 2023-08-22
 classes: wide
 header:
   teaser: /assets/images/htb-challenges-forensics-illumination/illumination.png
@@ -10,13 +10,11 @@ header:
   icon: /assets/images/hackthebox.webp
 categories:
   - hackthebox
+  - challenges
  
 tags:  
-  - burpsuite
-  - Command Injection
-  - python
-  - RCE
-  
+  - forensics
+    
 ---
 
 ![](/assets/images/htb-challenges-forensics-illumination/illumination.png)
