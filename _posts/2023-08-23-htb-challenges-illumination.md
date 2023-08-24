@@ -19,7 +19,7 @@ tags:
 
 ![](/assets/images/htb-challenges-forensics-illumination/illumination.png)
 
-## DESCRIPCIÓN DESAFIO:
+## Descripción del Desafio:
 
 Un desarrollador junior acaba de cambiarse a una nueva plataforma de control de código fuente. ¿Puedes encontrar la ficha secreta?
 
