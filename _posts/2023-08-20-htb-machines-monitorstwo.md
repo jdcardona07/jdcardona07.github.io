@@ -13,10 +13,11 @@ categories:
   - machines
  
 tags:  
-  - burpsuite
-  - Command Injection
-  - python
+  - cve-2022-46169
   - RCE
+  - hashcat
+  - limpeas
+  - GTFOBins
   
 ---
 
