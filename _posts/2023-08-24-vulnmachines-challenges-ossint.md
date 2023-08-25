@@ -118,3 +118,7 @@ Ahora vamos a copiar el archivo “FLAG.txt” a nuestra maquina e intentamos le
 
 ![](/assets/images/vm-challenges-osint/vulnmachines15.png)
 
+
+
+
+
