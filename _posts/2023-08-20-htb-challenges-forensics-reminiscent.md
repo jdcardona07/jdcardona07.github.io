@@ -61,7 +61,7 @@ Observamos que se ejecutó powershell con -enc el cual usa la codificación base
 
 Procedemos a decodificar el archivo.
 
-•	echo -n “CODIGO EN BASE64” "|" base64 -d  
+•	echo -n “CODIGO EN BASE64” I base64 -d  
 
 Observando la salida, podemos identificar nuestra flag.
 
