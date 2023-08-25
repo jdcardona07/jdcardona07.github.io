@@ -12,7 +12,7 @@ categories:
   - SIEM
  
 tags:  
-  - SIEM
+  - siem
   
 ---
 
