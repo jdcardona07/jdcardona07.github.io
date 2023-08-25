@@ -10,3 +10,5 @@ header:
   icon: /assets/images/zerologon.webp
 categories:
   - Vulnerabilidades
+tags:  
+  - PRUEBA
