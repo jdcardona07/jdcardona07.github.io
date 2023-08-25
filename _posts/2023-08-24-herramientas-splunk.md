@@ -16,7 +16,7 @@ tags:
   
 ---
 
-![]( /assets/images/herramientas/splunk.png)
+![]( /assets/images/herramientas/splunk8.png)
 
 Splunk es la solución SIEM (Security Information & Event Management) que permite monitorizar y analizar todo el big data de la empresa (en aplicaciones, sistemas e infraestructuras) a través de una interfaz web.
 
