@@ -114,7 +114,7 @@ La opcion “--no-sign-request” se utiliza para omitir el proceso de firma en 
 
 ![](/assets/images/vm-challenges-osint/vulnmachines14.png)
 
-Ahora vamos a copiar el archvi “FLAG.txt” a nuestra maquina e intentamos leerla.
+Ahora vamos a copiar el archivo “FLAG.txt” a nuestra maquina e intentamos leerla.
 
-![](/assets/images/vm-challenges-osintt/vulnmachines15.png)
+![](/assets/images/vm-challenges-osint/vulnmachines15.png)
 
