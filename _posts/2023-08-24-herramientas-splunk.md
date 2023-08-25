@@ -7,7 +7,7 @@ classes: wide
 header:
   teaser: /assets/images/herramientas/splunk.png
   teaser_home_page: true
-  icon: /assets/images/logo_splunk.webp
+  icon: /assets/images/herramientas/logo_splunk.webp
 categories:
   - SIEM
  
