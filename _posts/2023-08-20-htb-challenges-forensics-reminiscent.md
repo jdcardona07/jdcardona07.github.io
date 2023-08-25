@@ -27,22 +27,21 @@ Se detectó tráfico sospechoso desde la PC virtual de un reclutador. Se captur�
 
 Descargamos y descomprimimos el archivo.
 
-![](/assets/images/htb-challenges-forensics-illumination/reminiscent2.png)
+![](/assets/images/htb-challenges-forensics-reminiscent/reminiscent2.png)
 
 Leemos el archivo “imageinfo.txt” el cual nos indica que perfil utilizar al ejecutar volatilIty.
 
-![](/assets/images/htb-challenges-forensics-illumination/reminiscent3.png)
-
+![](/assets/images/htb-challenges-forensics-reminiscent/reminiscent3.png)
 
 Vamos a iniciar con el plugin “windows.pslist” para obtener la lista de procesos ejecutados en la maquina al momento del volcado de memoria.
 
 •	Python3 vol.py -f “RUT DEL ARCHIVO” windows.pslist”
 
-![](/assets/images/htb-challenges-forensics-illumination/reminiscent4.png)
+![](/assets/images/htb-challenges-forensics-reminiscent/reminiscent4.png)
 
 Observamos “poweshell.exe” ejecutándose con PID 2752.
 
-![](/assets/images/htb-challenges-forensics-illumination/reminiscent5.png)
+![](/assets/images/htb-challenges-forensics-reminiscent/reminiscent5.png)
 
 Vamos a utilizar el plugin “Windows.netscan” para obtener las conexiones realizadas en el momento del volcado de memoria del equipo.
 
@@ -50,7 +49,7 @@ Vamos a utilizar el plugin “Windows.netscan” para obtener las conexiones rea
 
 Llama la atención conexiones por el puerto 80 usando powershell.exe.
 
-![](/assets/images/htb-challenges-forensics-illumination/reminiscent6.png)
+![](/assets/images/htb-challenges-forensics-reminiscent/reminiscent6.png)
 
 Ahora utilizamos el plugin “Windows.cmdline” para obtener los comandos que se usaron para ejecutar el proceso en el momento del volcado de memoria del equipo.
 
@@ -58,7 +57,7 @@ Ahora utilizamos el plugin “Windows.cmdline” para obtener los comandos que s
 
 Observamos que se ejecutó powershell con -enc el cual usa la codificación base64.
 
-![](/assets/images/htb-challenges-forensics-illumination/reminiscent7.png)
+![](/assets/images/htb-challenges-forensics-reminiscent/reminiscent7.png)
 
 Procedemos a decodificar el archivo.
 
@@ -66,5 +65,5 @@ Procedemos a decodificar el archivo.
 
 Observando la salida, podemos identificar nuestra flag.
 
-![](/assets/images/htb-challenges-forensics-illumination/reminiscent8.png)
+![](/assets/images/htb-challenges-forensics-reminiscent/reminiscent8.png)
 
