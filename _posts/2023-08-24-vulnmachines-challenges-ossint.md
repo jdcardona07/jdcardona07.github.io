@@ -5,7 +5,7 @@ excerpt: Vamos a resolver los desafíos de la categoría OSINT, que correpsponde
 date: 2023-08-24
 classes: wide
 header:
-  teaser: /assets/images/vm-challenges-osint/vulnnmachines.png
+  teaser: /assets/images/vm-challenges-osint/vulnmachines.png
   teaser_home_page: true
   icon: /assets/images/vulnmachines.webp
 categories:
@@ -20,7 +20,7 @@ tags:
     
 ---
 
-![](/assets/images/vm-challenges-osint/vulnnmachines.png)
+![](/assets/images/vm-challenges-osint/vulnmachines.png)
 
 # OSINT Lab1
 
@@ -32,15 +32,15 @@ Para este primer desafio, debemos buscar en redes sociales una cuenta asociada a
 
 •	https://www.namecheckr.com/
 
-![](/assets/images/vm-challenges-osint/vulnnmachines2.png)
+![](/assets/images/vm-challenges-osint/vulnmachines2.png)
 
 Encontramos que la empresa tiene una cuenta en Twitter.
 
-![](/assets/images/vm-challenges-osint/vulnnmachines3.png)
+![](/assets/images/vm-challenges-osint/vulnmachines3.png)
 
 Identificamos que 3 de sus seguidores hacen referencia a la empresa, probablemente sean empeados.
 
-![](/assets/images/vm-challenges-osint/vulnnmachines4.png)
+![](/assets/images/vm-challenges-osint/vulnmachines4.png)
 
 Realizamos la revisión de cada uno de ellos, don encontramos nuestra primera flag en un comentario realizado por uno de ellos.
 
