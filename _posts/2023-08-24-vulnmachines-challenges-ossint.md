@@ -5,7 +5,7 @@ excerpt: Vamos a resolver los desafíos de la categoría OSINT, que correpsponde
 date: 2023-08-24
 classes: wide
 header:
-  teaser: /assets/images/vm-challenges-osintt/vulnmachines.png
+  teaser: /assets/images/vm-challenges-osint/vulnnmachines.png
   teaser_home_page: true
   icon: /assets/images/vulnmachines.webp
 categories:
@@ -20,7 +20,7 @@ tags:
     
 ---
 
-![](/assets/images/vm-challenges-osintt/vulnmachines.png)
+![](/assets/images/vm-challenges-osint/vulnnmachines.png)
 
 # OSINT Lab1
 
@@ -32,19 +32,19 @@ Para este primer desafio, debemos buscar en redes sociales una cuenta asociada a
 
 •	https://www.namecheckr.com/
 
-![](/assets/images/vm-challenges-osintt/vulnmachines2.png)
+![](/assets/images/vm-challenges-osint/vulnnmachines2.png)
 
 Encontramos que la empresa tiene una cuenta en Twitter.
 
-![](/assets/images/vm-challenges-osintt/vulnmachines3.png)
+![](/assets/images/vm-challenges-osint/vulnnmachines3.png)
 
 Identificamos que 3 de sus seguidores hacen referencia a la empresa, probablemente sean empeados.
 
-![](/assets/images/vm-challenges-osintt/vulnmachines4.png)
+![](/assets/images/vm-challenges-osint/vulnnmachines4.png)
 
 Realizamos la revisión de cada uno de ellos, don encontramos nuestra primera flag en un comentario realizado por uno de ellos.
 
-![](/assets/images/vm-challenges-osintt/vulnmachines5.png)
+![](/assets/images/vm-challenges-osint/vulnmachines5.png)
 
 
 # OSINT Lab2
@@ -55,17 +55,17 @@ Realizamos la revisión de cada uno de ellos, don encontramos nuestra primera fl
 
 Ahora para este desafio vamos a realizar una busqueda de infromacion en repositorios como GitHub, GitLab. Encontramos un repositorio de la empresa en GitHub, adicionalmente encontramos 2 usuarios vinculados que correposnden a las interaciones que vimos en Twitter.
 
-![](/assets/images/vm-challenges-osintt/vulnmachines6.png)
+![](/assets/images/vm-challenges-osint/vulnmachines6.png)
 
 Realziamos una búsqueda de cada uno de ellos en difernetes plataforma como  (GitHub, gist y GitLab) y encontramos el siguiente usuario de gist. 
 
 •	https://gist.github.com/emilyosintorg/
 
-![](/assets/images/vm-challenges-osintt/vulnmachines7.png)
+![](/assets/images/vm-challenges-osint/vulnmachines7.png)
 
 Revisando los códigos publicados, encontramos nuestra segunda bandera en los comentarios, adicionalmente obtenemos información relacionada con una instancia de Jenkins que podría ser útil para nuestro siguiente reto.
 
-![](/assets/images/vm-challenges-osintt/vulnmachines8.png)
+![](/assets/images/vm-challenges-osint/vulnmachines8.png)
 
 
 # OSINT Lab3
@@ -84,19 +84,19 @@ Luego de reconstruir la URL Jenkins, tenemos lo siguiente.
 
 Pero al intentar acceder por web no obtenemos nada.
 
-![](/assets/images/vm-challenges-osintt/vulnmachines9.png)
+![](/assets/images/vm-challenges-osint/vulnmachines9.png)
 
 Vamos a intentar descubrir si la URL es accesible mediante un puerto especifico. Para ello realizamos un NMAP sobre la URL y tenemos el puerto 8080.
 
-![](/assets/images/vm-challenges-osintt/vulnmachines10.png)
+![](/assets/images/vm-challenges-osint/vulnmachines10.png)
 
 Ahora si podemos ingresar a la aplicación, la cual no cuenta con un control de acceso.
 
-![](/assets/images/vm-challenges-osintt/vulnmachines11.png)
+![](/assets/images/vm-challenges-osint/vulnmachines11.png)
 
 Realizando una búsqueda sobre el sitio web, vemos que podemos acceder a las credenciales almacenadas y obtenemos nuestra flag.
 
-![](/assets/images/vm-challenges-osintt/vulnmachines12.png)
+![](/assets/images/vm-challenges-osint/vulnmachines12.png)
 
 # OSINT Lab4
 
@@ -106,13 +106,13 @@ Realizando una búsqueda sobre el sitio web, vemos que podemos acceder a las cre
 
 Revisando los registros de implementacion en la instancia de Jenkins, enumeramos la salida porconsola del proyecto “prod_maven” y encontramos un nombre de un dispositivo en AWS.
 
-![](/assets/images/vm-challenges-osintt/vulnmachines13.png)
+![](/assets/images/vm-challenges-osint/vulnmachines13.png)
 
 Ahora vamos a utilizar AWS CLI para intentar listar el contenido del equipo, vemos un archivo llamado FLAG.txt.
 
 La opcion “--no-sign-request” se utiliza para omitir el proceso de firma en los casos donde el acceso publico esta hablitado.
 
-![](/assets/images/vm-challenges-osintt/vulnmachines14.png)
+![](/assets/images/vm-challenges-osint/vulnmachines14.png)
 
 Ahora vamos a copiar el archvi “FLAG.txt” a nuestra maquina e intentamos leerla.
 
