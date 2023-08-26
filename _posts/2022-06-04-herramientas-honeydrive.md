@@ -1,6 +1,6 @@
 ---
 layout: single
-title: Instalación HoneyDrive - HoneyPot - Herramientas
+title: Instalación HoneyDrive - Herramientas
 excerpt: "​HoneyDrive es una distribución Linux orientada a la seguridad TI y, en particular, al despliegue y control de herramientas de tipo Honeypot. HoneyDrive ha sido creada por  Bruteforce Lab. La distribución se basa en una máquina virtual Xubuntu en formato OVA (Open Virtual Appliance) que puede descargarse desde la página oficial de SourceForge.."
 date: 2022-06-04
 classes: wide
