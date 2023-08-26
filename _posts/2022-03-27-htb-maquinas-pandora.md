@@ -23,6 +23,9 @@ tags:
 
 ![](/assets/images/htb-machines-pandora/pandora.png)
 
+# Pandora
+Pandora es una máquina Linux de fácil calificación. El escaneo de puertos revela un servicio SSH, un servidor web y SNMP ejecutándose en la caja. El punto de apoyo inicial se obtiene enumerando el servicio SNMP, que revela las credenciales de texto sin cifrar para el usuario "daniel". La enumeración de hosts revela que Pandora FMS se ejecuta en un puerto interno, al que se puede acceder mediante reenvío de puertos. El movimiento lateral hacia otro usuario llamado `matt` se logra encadenando la inyección SQL y el proceso. Vulnerabilidades RCE en el servicio PandoraFMS. La escalada de privilegios al usuario "root" se realiza explotando un binario SUID para la inyección de la variable PATH.
+
 ## 1. Enumeración:
 Iniciamos con una fase de reconocimiento, identificando los servicios soportados por el servidor. Con Nmap vamos a listar los puertos TCP y la versión de los servicios que están utilizando.
 
