@@ -1,7 +1,7 @@
 ---
 layout: single
 title: OSINT - Challenges - Vulnmachines
-excerpt: Vamos a resolver los desafíos de la categoría OSINT, que correpsponden a la busqueda información en internet para encontrar las flag."
+excerpt: Vamos a resolver los desafíos de la categoría OSINT de la plataforma https://vulnmachines.com, que correpsponden a la busqueda información en internet para encontrar las flag."
 date: 2023-08-24
 classes: wide
 header:
