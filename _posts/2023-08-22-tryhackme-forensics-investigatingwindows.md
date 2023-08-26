@@ -19,6 +19,8 @@ tags:
     
 ---
 
+Vamos a resolver el reto "Investigating Windows" de la categoria Forensics de la plataforma TryHackMe.
+
 ![](/assets/images/trehackme-forensics-investigatingwindows/investigating2.png)
 
 ## Descripción del Desafio:
