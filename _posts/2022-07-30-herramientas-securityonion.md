@@ -7,7 +7,7 @@ classes: wide
 header:
   teaser: /assets/images/herramientas/securityonion/securityonion.png
   teaser_home_page: true
-  icon: /assets/images/herramientas/securityonion.webp
+  icon: /assets/images/securityonion.webp
 categories:
   - IDS
  
