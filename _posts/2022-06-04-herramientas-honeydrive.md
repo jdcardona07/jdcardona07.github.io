@@ -7,7 +7,7 @@ classes: wide
 header:
   teaser: /assets/images/herramientas/honeydrive.png
   teaser_home_page: true
-  icon: /assets/images/herramientas/honeypot.webp
+  icon: /assets/images/honeypot.webp
 categories:
   - HoneyPot
  
