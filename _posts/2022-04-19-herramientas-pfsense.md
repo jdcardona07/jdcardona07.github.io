@@ -18,7 +18,7 @@ tags:
 
 ![]( /assets/images/herramientas/pfsense.png)
 
-#pfSense
+# pfSense
 pfSense es una distribución personalizada de FreeBSD adaptado para su uso como Firewall y Enrutador. Se caracteriza por ser de código abierto, puede ser instalado en una gran variedad de ordenadores, y además cuenta con una interfaz web sencilla para su configuración.
 
 ## 1.  Introducción
