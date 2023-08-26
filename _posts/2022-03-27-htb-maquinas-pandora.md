@@ -1,11 +1,11 @@
 ---
 layout: single
-title: Pandora - Machines - Hack The Box
-excerpt: "Pandora es una máquina Linux de fácil calificación. El escaneo de puertos revela un servicio SSH, un servidor web y SNMP ejecutándose en la caja. El punto de apoyo inicial se obtiene enumerando el servicio SNMP, que revela las credenciales de texto sin cifrar para el usuario "daniel"."
-date: 2022-03-27
+title: MonitorsTwo - Machines - Hack The Box
+excerpt: "MonitorsTwo es una máquina de dificultad fácil en la plataforma de HTB. Para acceder debemos explotar una vulnerabilidad en Cacti, accederemos a un contenedor en el que tendremos que elevar privilegios mediante un binario SUID, conseguiremos acceso a la máquina principal crackeando un hash obtenido mediante la enumeración de la base de datos MySQL. Para escalar privilegios en la máquina principal, encontraremos una vulnerabilidad en Docker en la cual podremos ejecutar comandos del contenedor en la máquina principal obteniendo así root gracias a la bash con permisos SUID.."
+date: 2023-08-20
 classes: wide
 header:
-  teaser: /assets/images/htb-machines-pandora/pandora.png
+  teaser: /assets/images/htb-machines-monitorstwo/monitorstwo.png
   teaser_home_page: true
   icon: /assets/images/hackthebox.webp
 categories:
@@ -13,11 +13,11 @@ categories:
   - machines
  
 tags:  
-  - cve-2021-32099
-  - sqlinjection
-  - snmp
+  - cve-2022-46169
+  - rce
+  - hashcat
   - limpeas
-  
+  - gtfobins
   
 ---
 
