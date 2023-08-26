@@ -51,6 +51,8 @@ Además, T-Pot incluye las siguientes herramientas
 ## 1. Instalación:
 Desde el portal de Azure vamos a realizar la creación de nuestro recurso para el montaje del laboratorio.
 
+Puede obtener una cuenta gratuita visitando https://azure.microsoft.com/en-us/free/ y registrándose.
+
 ### Algunas características minimas del equipo:
 •	Sistema operativo: Debian 10.11
 •	Memoria Ram: 16 GB
