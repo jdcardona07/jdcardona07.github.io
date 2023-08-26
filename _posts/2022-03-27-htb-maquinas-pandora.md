@@ -1,7 +1,7 @@
 ---
 layout: single
 title: Pandora - Machines - Hack The Box
-excerpt: ""
+excerpt: "Pandora es una máquina Linux de fácil calificación. El escaneo de puertos revela un servicio SSH, un servidor web y SNMP ejecutándose en la caja."
 date: 2022-03-27
 classes: wide
 header:
