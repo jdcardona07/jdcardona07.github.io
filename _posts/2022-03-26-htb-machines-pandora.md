@@ -17,9 +17,7 @@ tags:
   - sqlinjection
   - snmp
   - linpeas
-  - limpeas
-  - gtfobins
-  
+ 
 ---
 
 ![](/assets/images/htb-machines-pandora/pandora.png)
