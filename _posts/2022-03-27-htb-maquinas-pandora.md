@@ -1,7 +1,7 @@
 ---
 layout: single
 title: Pandora - Machines - Hack The Box
-excerpt: "Pandora es una máquina Linux de fácil calificación. El escaneo de puertos revela un servicio SSH, un servidor web y SNMP ejecutándose en la caja. El punto de apoyo inicial se obtiene enumerando el servicio SNMP, que revela las credenciales de texto sin cifrar para el usuario "daniel". La enumeración de hosts revela que Pandora FMS se ejecuta en un puerto interno, al que se puede acceder mediante reenvío de puertos. El movimiento lateral hacia otro usuario llamado `matt` se logra encadenando la inyección SQL y el proceso. Vulnerabilidades RCE en el servicio PandoraFMS. La escalada de privilegios al usuario "root" se realiza explotando un binario SUID para la inyección de la variable PATH."
+excerpt: "MonitorsTwo es una máquina de dificultad fácil en la plataforma de HTB. Para acceder debemos explotar una vulnerabilidad en Cacti, accederemos a un contenedor en el que tendremos que elevar privilegios mediante un binario SUID, conseguiremos acceso a la máquina principal crackeando un hash obtenido mediante la enumeración de la base de datos MySQL. Para escalar privilegios en la máquina principal, encontraremos una vulnerabilidad en Docker en la cual podremos ejecutar comandos del contenedor en la máquina principal obteniendo así root gracias a la bash con permisos SUID.."
 date: 2023-08-20
 classes: wide
 header:
