@@ -2,10 +2,10 @@
 layout: single
 title: Pandora - Machines - Hack The Box
 excerpt: ""
-date: 2023-08-20
+date: 2022-03-27
 classes: wide
 header:
-  teaser: /assets/images/htb-machines-monitorstwo/monitorstwo.png
+  teaser: /assets/images/htb-machines-pandora/pandora.png
   teaser_home_page: true
   icon: /assets/images/hackthebox.webp
 categories:
@@ -13,11 +13,11 @@ categories:
   - machines
  
 tags:  
-  - cve-2022-46169
-  - rce
-  - hashcat
-  - limpeas
-  - gtfobins
+  - cve-2021-32099
+  - sqlinjection
+  - snmp
+  - linpeas
+ 
   
 ---
 
