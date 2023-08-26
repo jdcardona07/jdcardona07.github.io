@@ -1,13 +1,13 @@
 ---
 layout: single
-title: Instalación Alient Vault OSSIM - Herramientas
+title: Instalación AlientVault OSSIM - Herramientas
 excerpt: "AlienVault OSSIM es una gestión de eventos e información de seguridad (SIEM) de código abierto y rica en funciones que incluye recopilación, normalización y correlación de eventos."
 date: 2022-05-28
 classes: wide
 header:
-  teaser: /assets/images/herramientas/alientvault.png
+  teaser: /assets/images/herramientas/alientvault/alientvault.png
   teaser_home_page: true
-  icon: /assets/images/alientvault.webp
+  icon: /assets/images/alienvault.webp
 categories:
   - SIEM
  
