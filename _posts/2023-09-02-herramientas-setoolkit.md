@@ -32,6 +32,8 @@ Es una completísima suite dedicada a la ingeniería social, que nos permite aut
 
 El kit de herramientas SET está especialmente diseñado para realizar ataques avanzados contra el elemento humano. Originalmente, este instrumento fue diseñado para ser publicado con el lanzamiento de http://www.social-engineer.org y rápidamente se ha convertido en una herramienta estándar en el arsenal de los pentesters. SET fue escrito por David Kennedy (ReL1K) con un montón de ayuda de la comunidad en la incorporación de los ataques nunca antes vistos en un juego de herramientas de explotación.
 
+## Laboratorio
+
 Para este laboratorio vamos a manejar sistemas virtualizados (Mikrotik, Kali Linux, Windows 7) 
 
 • Usaremos el Mikrotik como Gateway, Servidor DNS y Servidor del portal cautivo. 
