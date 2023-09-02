@@ -47,6 +47,9 @@ Para este laboratorio vamos a manejar sistemas virtualizados (Mikrotik, Kali Lin
 Este tutorial se ofrece solamente con propósito educativos y de información. Asimismo, en ningún caso este blog se hace responsable por daños o perjuicios ocasionados por las herramientas o sitios web recomendados en los tutoriales.
 
 ## Desmostración 
+
+### Video:
+
 [![Alt text](https://img.youtube.com/vi/YHLuVMuRelE/0.jpg)](https://www.youtube.com/watch?v=YHLuVMuRelE)
 
 ## Referencias
