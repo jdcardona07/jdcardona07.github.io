@@ -43,11 +43,7 @@ Para este laboratorio vamos a manejar sistemas virtualizados (Mikrotik, Kali Lin
 • El Windows 7 será la víctima que se conecta a la red.
 
 ## Desmostración 
-https://github.com/jdcardona07/jdcardona07.github.io/assets/98642593/5dea6532-e031-4812-9fe5-ec1c762be745
-
-[![](https://markdown-videos.deta.dev/youtube/YHLuVMuRelE)](https://https://youtu.be/YHLuVMuRelE)
-
-![](/assets/images/herramientas/Setoolkit/Setoolkit.mp4)
+[![Alt text](https://img.youtube.com/vi/YHLuVMuRelE/0.jpg)](https://www.youtube.com/watch?v=YHLuVMuRelE)
 
 ## Referencias
 
