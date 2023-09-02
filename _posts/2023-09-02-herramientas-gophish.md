@@ -63,10 +63,5 @@ Este tutorial se ofrece solamente con propósito educativos y de información. A
 
 • https://github.com/gophish/gophish/releases
 
-• https://www.youtube.com/watch?v=S6S5JF6Gou0
-
 • https://github.com/htr-tech/zphisher
 
-• https://www.hacking.land/2020/03/zphisher-automated-phishing-tool.html
-
-• https://www.youtube.com/hashtag/zphisher
