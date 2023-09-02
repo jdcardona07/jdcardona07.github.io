@@ -37,7 +37,17 @@ Tiene 37 plantillas de página de phishing; incluyendo Facebook, Twitter y Paypa
 
 En este caso se estaría suplantando una publicidad de “Netflix” ofreciéndola a un descuento del 80%, como se muestra en la imagen y así obtener información del correo del usuario y clave que pueda estar utilizando actualmente en alguna de las plataformas que utiliza, en este caso si tiene la cuenta de Netflix obtenemos su clave y con esta podemos intentar enviar correos si es la misma en su cuenta de correo.
 
+![](/assets/images/herramientas/gophish/gophish2.png)
+
 También se podría realizar ingeniería social si esta persona trabajar en una empresa que se quiere vulnerar y en la que conocemos el formato de correo podemos intentar usar esta cuenta y clave para obtener acceso. Luego de colocar los datos de Usuario y Clave, se redirige al sitio original de Netflix para no levantar sospechas y se utilizará la página de olvido de contraseña de Netflix. A continuación, las pantallas de la campaña.
+
+A continuación, la pantalla que le aparece a la persona al dar clic en el enlace se puede observar que nos redirige al sitio “directory-positions-blogging-lace.trycloudflare.com”
+
+![](/assets/images/herramientas/gophish/gophish3.png)
+
+Al colocar los datos que nos piden en la pantalla y luego de darle al botón “Sign In” y que hemos capturado los datos, se enviara a la pantalla de Clave Olvidada de Netflix.
+
+![](/assets/images/herramientas/gophish/gophish4.png)
 
 ## Descargo de responsabilidad
 
@@ -45,7 +55,7 @@ Este tutorial se ofrece solamente con propósito educativos y de información. A
 
 
 ## Desmostración 
-[![Alt text](https://img.youtube.com/vi/A7FcjJUJ_Hq6Pdfl/0.jpg)](https://www.youtube.com/watch?v=A7FcjJUJ_Hq6Pdfl)
+[![Alt text](https://img.youtube.com/vi/rpEDnuiEJWLGUcEX/0.jpg)](https://www.youtube.com/watch?v=rpEDnuiEJWLGUcEX)
 
 ## Referencias
 
