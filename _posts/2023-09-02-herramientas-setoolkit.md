@@ -45,7 +45,7 @@ Para este laboratorio vamos a manejar sistemas virtualizados (Mikrotik, Kali Lin
 ## Desmostración 
 https://github.com/jdcardona07/jdcardona07.github.io/assets/98642593/5dea6532-e031-4812-9fe5-ec1c762be745
 
-[![](https://markdown-videos.deta.dev/youtube/YHLuVMuRelE)](https://youtu.be/YHLuVMuRelE?si=Ia53rqXL9xFV98NE)
+[![](https://markdown-videos.deta.dev/youtube/YHLuVMuRelE)](https://https://youtu.be/YHLuVMuRelE)
 
 ![](/assets/images/herramientas/Setoolkit/Setoolkit.mp4)
 
