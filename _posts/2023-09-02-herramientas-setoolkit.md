@@ -42,6 +42,10 @@ Para este laboratorio vamos a manejar sistemas virtualizados (Mikrotik, Kali Lin
 
 • El Windows 7 será la víctima que se conecta a la red.
 
+## Descargo de responsabilidad
+
+Este tutorial se ofrece solamente con propósito educativos y de información. Asimismo, en ningún caso este blog se hace responsable por daños o perjuicios ocasionados por las herramientas o sitios web recomendados en los tutoriales.
+
 ## Desmostración 
 [![Alt text](https://img.youtube.com/vi/YHLuVMuRelE/0.jpg)](https://www.youtube.com/watch?v=YHLuVMuRelE)
 
