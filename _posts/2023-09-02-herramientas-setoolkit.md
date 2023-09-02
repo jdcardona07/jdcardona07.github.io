@@ -28,3 +28,7 @@ Esta vulnerabilidad de ejecución remota de código afecta al Servicios de Escri
 [![](https://markdown-videos.deta.dev/youtube/YHLuVMuRelE?si=Ia53rqXL9xFV98NE)](https://youtu.be/YHLuVMuRelE?si=Ia53rqXL9xFV98NE)
 
 
+
+
+https://github.com/jdcardona07/jdcardona07.github.io/assets/98642593/5dea6532-e031-4812-9fe5-ec1c762be745
+
