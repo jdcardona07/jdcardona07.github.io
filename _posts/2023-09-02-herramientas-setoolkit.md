@@ -5,7 +5,7 @@ excerpt: "Se configurara un portal cautivo (Hotspot) mediante el cual se busca r
 date: 2023-09-02
 classes: wide
 header:
-  teaser: /assets/images/herramientas/setoolkit/set.png
+  teaser: /assets/images/herramientas/Setoolkit/set.png
   teaser_home_page: true
   icon: /assets/images/mikrotik.webp
 categories:
@@ -20,7 +20,7 @@ tags:
   
 ---
 
-![](/assets/images/herramientas/setoolkit/set.png)
+![](/assets/images/herramientas/Setoolkit/set.png)
 
 ## Portal Cautivo (Hotspot)
 
@@ -44,6 +44,8 @@ Para este laboratorio vamos a manejar sistemas virtualizados (Mikrotik, Kali Lin
 
 ## Desmostración 
 ![](https://github.com/jdcardona07/jdcardona07.github.io/assets/98642593/5dea6532-e031-4812-9fe5-ec1c762be745)
+
+![](/assets/images/herramientas/Setoolkit/Setoolkit.mp4)
 
 ## Referencias
 
