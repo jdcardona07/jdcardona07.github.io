@@ -1,7 +1,7 @@
 ---
 layout: single
 title: Captura de credenciales mediante Hotspot y Setoolkit - Herramientas
-excerpt: "Se configurara un portal cautivo (Hotspot) mediante el cual se busca realizar la autenticación de usuarios a una red abierta , en este se ofrecerá un servicio de acceso a internet (Wifi gratis). luego de ello mediante herramientas y técnicas de hacking, se buscará obtener información confidencial de los usuarios autenticados"
+excerpt: "Se configurara un portal cautivo (Hotspot) mediante el cual se busca realizar la autenticación de usuarios a una red abierta , en este se ofrecerá un servicio de acceso a internet (Wifi gratis). luego de ello mediante la herramienta Setoolkit, se buscará obtener información confidencial de los usuarios autenticados"
 date: 2023-09-02
 classes: wide
 header:
