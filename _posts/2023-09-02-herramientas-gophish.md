@@ -55,7 +55,7 @@ Este tutorial se ofrece solamente con propósito educativos y de información. A
 
 
 ## Desmostración 
-[![Alt text](https://img.youtube.com/vi/rpEDnuiEJWLGUcEX/0.jpg)](https://www.youtube.com/watch?v=rpEDnuiEJWLGUcEX)
+[![Alt text](https://img.youtube.com/vi/2o0k5g3E5_0/0.jpg)](https://www.youtube.com/watch?v=2o0k5g3E5_0)
 
 ## Referencias
 
