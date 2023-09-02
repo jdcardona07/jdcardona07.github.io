@@ -25,8 +25,6 @@ tags:
 
 Esta vulnerabilidad de ejecución remota de código afecta al Servicios de Escritorio Remoto (RDP), anteriormente conocidos como Terminal Server. Esta vulnerabilidad es de pre-autenticación y no requiere la interacción del usuario. En otras palabras, esta vulnerabilidad actúa como un Gusano, lo que significa que cualquier malware que explote el fallo podría propagarse rápidamente a otras máquinas vulnerables. Este caso es similar al malware WannaCry que se extendió por todo el mundo en el año 2017.
 
-![](/assets/images/herramientas/Setoolkit/Setoolkit.mp4)
-
-[![](https://markdown-videos.deta.dev/youtube/YHLuVMuRelE)](https://www.youtube.com/watch?v=YHLuVMuRelE)
+[![](https://markdown-videos.deta.dev/youtube/YHLuVMuRelE?si=Ia53rqXL9xFV98NE)](https://youtu.be/YHLuVMuRelE?si=Ia53rqXL9xFV98NE)
 
 
