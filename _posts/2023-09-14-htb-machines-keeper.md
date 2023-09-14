@@ -1,6 +1,6 @@
 ---
 layout: single
-title: MKeeper - Machines - Hack The Box
+title: Keeper - Machines - Hack The Box
 excerpt: "Keeper es una máquina basada en Linux de nivel facil que se centra en explotar vulnerabilidades en el gestor de contraseñas KeePass."
 date: 2023-09-14
 classes: wide
