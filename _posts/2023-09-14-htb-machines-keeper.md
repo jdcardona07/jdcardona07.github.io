@@ -60,7 +60,7 @@ Luego de buscar sobre todo los módulos del sitio, identificamos que en el menú
 
 •	Usuario lnorgaard
 
-•	Contraseña: Welcome2023!
+•	Contraseña: WeXXXXXXXX
 
 ![](/assets/images/htb-machines-keeper/keeper8.png)
 
