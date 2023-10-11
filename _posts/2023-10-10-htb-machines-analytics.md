@@ -1,7 +1,7 @@
 ---
 layout: single
-title: Analytics - Machines - Hack The Box
-excerpt: "Analytics es una máquina Linux de dificultad fácil que implica explotar una vulnerabilidad en la herramienta Metabase, lo que nos permite la ejecución remota de código (RCE).
+title: Busqueda - Machines - Hack The Box
+excerpt: "Analytics es una máquina Linux de dificultad fácil que implica explotar una vulnerabilidad en la herramienta Metabase, lo que nos permite la ejecución remota de código (RCE)."
 date: 2023-10-10
 classes: wide
 header:
