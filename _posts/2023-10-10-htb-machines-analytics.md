@@ -20,7 +20,7 @@ tags:
   
 ---
 
-![](/assets/images/htb-writeup-analytics/analytics_logo.png)
+![](/assets/images/htb-writeup-analytics/analytics.png)
 
 Analytics es una máquina Linux de dificultad fácil que implica explotar una vulnerabilidad en la herramienta Metabase, lo que nos permite la ejecución remota de código (RCE).
 
