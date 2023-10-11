@@ -95,7 +95,7 @@ Vamos a clonarlo a nuetstra maquina y ejecutamos el siguiente comando para gener
 
 -	gcc exploit.c -o exploit
   
-Luego vamos a levantar un servidor en nuestra maquina atacante para descargar el explot a la maquina víctima.
+Luego vamos a levantar un servidor en nuestra maquina atacante para descargar el exploit a la maquina víctima.
 
 ![](/assets/images/htb-writeup-analytics/analytics12.png)
 
