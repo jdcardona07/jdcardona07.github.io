@@ -1,8 +1,7 @@
 ---
 layout: single
 title: Analytics - Machines - Hack The Box
-excerpt: "Busqueda es una máquina Linux de dificultad fácil que implica explotar una vulnerabilidad de inyección de comandos presente en un módulo de Python. Al aprovechar esta vulnerabilidad, obtenemos acceso a nivel de usuario a la máquina. A escalar privilegios a root, descubrimos credenciales dentro de un archivo de configuración de Git, lo que nos permite iniciar sesión en un local Servicio de gitea. Además, descubrimos que se puede ejecutar un script de verificación del sistema con privilegios de root. por un usuario específico. Al utilizar este script, enumeramos los contenedores Docker que revelan las credenciales para el
-cuenta Gitea del usuario administrador. Análisis adicional del código fuente del script de verificación del sistema en un El repositorio de Git revela un medio para explotar una referencia de ruta relativa, lo que nos permite la ejecución remota de código (RCE) con privilegios de root."
+excerpt: "Analytics es una máquina Linux de dificultad fácil que implica explotar una vulnerabilidad en la herramienta Metabase, lo que nos permite la ejecución remota de código (RCE).
 date: 2023-10-10
 classes: wide
 header:
@@ -23,8 +22,7 @@ tags:
 
 ![](/assets/images/htb-writeup-analytics/analytics_logo.png)
 
-Busqueda es una máquina Linux de dificultad fácil que implica explotar una vulnerabilidad de inyección de comandos presente en un módulo de Python. Al aprovechar esta vulnerabilidad, obtenemos acceso a nivel de usuario a la máquina. A escalar privilegios a root, descubrimos credenciales dentro de un archivo de configuración de Git, lo que nos permite iniciar sesión en un local Servicio de gitea. Además, descubrimos que se puede ejecutar un script de verificación del sistema con privilegios de root. por un usuario específico. Al utilizar este script, enumeramos los contenedores Docker que revelan las credenciales para el
-cuenta Gitea del usuario administrador. Análisis adicional del código fuente del script de verificación del sistema en un El repositorio de Git revela un medio para explotar una referencia de ruta relativa, lo que nos permite la ejecución remota de código (RCE) con privilegios de root.
+Analytics es una máquina Linux de dificultad fácil que implica explotar una vulnerabilidad en la herramienta Metabase, lo que nos permite la ejecución remota de código (RCE).
 
 # 1. Enumeración
    
