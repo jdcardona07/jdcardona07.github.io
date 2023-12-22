@@ -17,6 +17,8 @@ tags:
   - Password Cracking
   - Steal Web Session Cookie
   - cozyhosting
+  - Hashcat
+  - gtfobins
     
 ---
 
