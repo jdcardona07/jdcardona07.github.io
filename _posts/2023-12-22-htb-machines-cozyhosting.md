@@ -1,6 +1,6 @@
 ---
 layout: single
-title: cozyhosting - Machines - Hack The Box
+title: Cozyhosting - Machines - Hack The Box
 excerpt: "cozyhosting es una máquina de nivel facil, con sistema operativo Linux que tiene una vulnerabilidad en una aplicación web que lleva a la toma total del control del sistema."
 date: 2023-12-22
 classes: wide
