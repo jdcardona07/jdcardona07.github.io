@@ -5,7 +5,7 @@ excerpt: "greenhorn es una máquina de nivel facil, con sistema operativo Linux 
 date: 2024-08-14
 classes: wide
 header:
-  teaser: /assets/images/htb-machines-greenhorn/greenhorn1.png
+  teaser: /assets/images/htb-writeup-greenhorn/greenhorn1.png
   teaser_home_page: true
   icon: /assets/images/hackthebox.webp
 categories:
@@ -20,7 +20,7 @@ tags:
      
 ---
 
-![](/assets/images/htb-machines-greenhorn/greenhorn1.png)
+![](/assets/images/htb-writeup-greenhorn/greenhorn1.png)
 
 greenhorn es una máquina de nivel facil, con sistema operativo Linux que tiene una vulnerabilidad de shell remoto en una aplicación web Pluck que lleva a la toma total del control del sistema.
 
