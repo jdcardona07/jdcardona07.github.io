@@ -1,7 +1,7 @@
 ---
 layout: single
 title: GreenHorn - Machines - Hack The Box
-excerpt: "greenhorn es una máquina de nivel facil, con sistema operativo Linux que tiene una vulnerabilidad de shell remoto en una aplicación web Pluck que lleva a la toma total del control del sistema."
+excerpt: "GreenHorn es una máquina de nivel facil, con sistema operativo Linux que tiene una vulnerabilidad de shell remoto en una aplicación web Pluck que lleva a la toma total del control del sistema."
 date: 2024-08-14
 classes: wide
 header:
@@ -22,7 +22,7 @@ tags:
 
 ![](/assets/images/htb-writeup-greenhorn/greenhorn1.png)
 
-greenhorn es una máquina de nivel facil, con sistema operativo Linux que tiene una vulnerabilidad de shell remoto en una aplicación web Pluck que lleva a la toma total del control del sistema.
+GreenHorn es una máquina de nivel facil, con sistema operativo Linux que tiene una vulnerabilidad de shell remoto en una aplicación web Pluck que lleva a la toma total del control del sistema.
 
 ## 1. Enumeración 
 
@@ -128,7 +128,7 @@ Con la contraseña obtenida en los pasos anteriores intentamos autenticarnos con
 
 ![](/assets/images/htb-writeup-greenhorn/greenhorn22.png)
 
-## 3. Escalada de privilegios
+## 4. Escalada de privilegios
 
 Necesitamos escalar privilegios para poder llegar a la bandera del usuario “root”. Vamos a identificar archivos ocultos.
 
