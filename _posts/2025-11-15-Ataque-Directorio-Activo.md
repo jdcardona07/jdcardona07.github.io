@@ -173,12 +173,10 @@ Se utiliza impacket-secretsdump en el Child DC para extraer los hashes de la cue
 
 ![](/assets/images/activedirectory/dc_25.png)
 
-
-## Extracción del Hash
-
 Se utiliza impacket-lookupsid para obtener el Identificador de Seguridad (SID) único del Dominio Hijo y Padre, dato crucial para la posterior falsificación del Golden Ticket.
 
 •	/usr/bin/impacket-lookupsid child/corpmngr:'User4&*&*'@child.warfare.corp
+
 •	/usr/bin/impacket-lookupsid child/corpmngr:'User4&*&*'@warfare.corp
 
 ![](/assets/images/activedirectory/dc_26.png)
