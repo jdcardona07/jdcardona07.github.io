@@ -1,4 +1,3 @@
-
 ---
 layout: single
 title: Explotación de CVE-2014-0160 - Vulnerabilidades
