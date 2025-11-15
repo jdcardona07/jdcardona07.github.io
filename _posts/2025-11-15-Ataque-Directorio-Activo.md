@@ -56,7 +56,7 @@ Tras registrar y autenticarse con credenciales aleatorias, se accede exitosament
 
 ![](/assets/images/activedirectory/dc_6.png)
 
-Un campo interesante que encontramos fue el campo de correo electrónico del boletín.
+Un campo interesante que encontramos fue el campo de correo electrónico para envio de boletín.
 
 ![](/assets/images/activedirectory/dc_7.png)
 
@@ -75,7 +75,7 @@ Iniciamos sesión por ssh en la máquina, con las credenciales descubiertas en e
 
 ![](/assets/images/activedirectory/dc_10.png)
 
-Dentro del servidor se obseran dos interfaces de red, confirmando acceso a una red interna (192.168.98.0/24).
+Dentro del servidor se observamosa dos interfaces de red, confirmando acceso a una red interna (192.168.98.0/24).
 
 ![](/assets/images/activedirectory/dc_11.png)
 
