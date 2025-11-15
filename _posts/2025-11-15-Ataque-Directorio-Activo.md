@@ -2,7 +2,7 @@
 layout: single
 title: Explotación de CVE-2014-0160 - Vulnerabilidades
 excerpt: "Heartbleed, mejor conocida como CVE-2014-0160 es una vulnerabilidad que permite a un atacante leer hasta 64 Kb de memoria por ataque en cualquier cliente o servidor conectado."
-date: 2020-05-15
+date: 2025-11-15
 classes: wide
 header:
   teaser: /assets/images/vulnerabilidades/cve-2014-0160/cve-2014-0160.png
