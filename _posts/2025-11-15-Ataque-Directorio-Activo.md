@@ -7,7 +7,7 @@ classes: wide
 header:
   teaser: /assets/images/Active Directory/dc_1.png
   teaser_home_page: true
-  icon: /assets/images/heartbleed.webp
+  icon: /assets/images/windows.webp
 categories:
   - activedirectory
  
