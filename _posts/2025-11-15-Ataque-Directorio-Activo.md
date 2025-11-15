@@ -5,7 +5,7 @@ excerpt: "De la Explotación Web al Control del Directorio: El Camino Completo p
 date: 2025-11-15
 classes: wide
 header:
-  teaser: /assets/images/Active Directory/dc_1.png
+  teaser: /assets/images/activedirectory/dc.png
   teaser_home_page: true
   icon: /assets/images/windows.webp
 categories:
@@ -20,7 +20,7 @@ tags:
   
 ---
 
-![](/assets/images/Active%20Directory/dc.png)
+![](/assets/images/activedirectory/dc.png)
 
 
 ## Descripción:
