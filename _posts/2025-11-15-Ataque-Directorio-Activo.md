@@ -1,7 +1,7 @@
 ---
 layout: single
-title: Explotación de CVE-2014-0160 - Vulnerabilidades
-excerpt: "Heartbleed, mejor conocida como CVE-2014-0160 es una vulnerabilidad que permite a un atacante leer hasta 64 Kb de memoria por ataque en cualquier cliente o servidor conectado."
+title: De la Explotación Web al Control del Directorio: El Camino Completo para un Ataque Golden Ticket - ActiveDirectory - activedirectory
+excerpt: "Comprometiendo el DC a través de un Pivote de Red"
 date: 2025-11-15
 classes: wide
 header:
