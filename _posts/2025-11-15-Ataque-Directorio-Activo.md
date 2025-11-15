@@ -9,14 +9,14 @@ header:
   teaser_home_page: true
   icon: /assets/images/heartbleed.webp
 categories:
-  - Vulnerabilidades
+  - activedirectory
  
 tags:  
-  - cve-2014-0160
-  - heartbleed
-  - openssL
-  - censys
-  - metasploit
+  - activedirectory
+  - goldenticket
+  - impacket
+  - ligolong
+  - passthehash
   
 ---
 
