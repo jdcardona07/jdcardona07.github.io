@@ -20,7 +20,7 @@ tags:
   
 ---
 
-![](/assets/images/Active Directory/dc_1.png).
+![](/assets/images/Active_Directoty/dc_01.png)
 
 
 ## Descripción:
