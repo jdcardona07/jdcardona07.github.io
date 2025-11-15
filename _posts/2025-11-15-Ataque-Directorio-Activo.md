@@ -20,7 +20,8 @@ tags:
   
 ---
 
-![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-0160.png)
+![](/assets/images/Active Directory/dc_1.png).
+
 
 ## Descripción:
 
