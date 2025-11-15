@@ -1,7 +1,7 @@
 ---
 layout: single
-title: Explotación de CVE-2014-0160 - Vulnerabilidades
-excerpt: "Heartbleed, mejor conocida como CVE-2014-0160 es una vulnerabilidad que permite a un atacante leer hasta 64 Kb de memoria por ataque en cualquier cliente o servidor conectado."
+title: De la Explotación Web al Control del Directorio: El Camino Completo para un Ataque Golden Ticket - ActiveDirectory
+excerpt: "Comprometiendo el DC a través de un Pivote de Red"
 date: 2025-11-15
 classes: wide
 header:
@@ -9,14 +9,14 @@ header:
   teaser_home_page: true
   icon: /assets/images/heartbleed.webp
 categories:
-  - Vulnerabilidades
+  - ActiveDirectory
  
 tags:  
-  - cve-2014-0160
-  - heartbleed
-  - openssL
-  - censys
-  - metasploit
+  - ActiveDirectory
+  - GoldenTicket
+  - Impacket
+  - LigoloNG
+  - PassTheHash
   
 ---
 
@@ -24,7 +24,7 @@ tags:
 
 ## Descripción:
 
-CVE-2014-0160, o "Heartbleed", no es un problema en SSL / TL específicamente, sino que fue un problema de implementación en OpenSSL que afecta a las versiones 1.0.1 a 1.0.1f. Puede solucionarse actualizando a una versión más reciente de OpenSSL o compilando alternativamente con la opción -DOPENSSL_NO_HEARTBEATS. No requiere un Man-in-the-Middle para explotar y puede ser explotado tanto contra el servidor como contra el cliente. El problema permite a un atacante extraer hasta 64 kb de memoria del sistema vulnerable, lo que puede conducir al robo de credenciales, tokens de sesión y claves privadas del servidor.
+Este ejercicio simula un escenario de penetración en una infraestructura corporativa con una red altamente segmentada y una jerarquía de Active Directory (dominios Padre e Hijo). El ejercicio comienza con el acceso inicial a un sistema perimetral, para luego requerir el pivoteo de red a través de un túnel para acceder a la red interna y sus sistemas críticos. El objetivo final es la escalada de privilegios a nivel de dominio, aplicando técnicas de post-explotación como la extracción de credenciales (LSA Dump), el movimiento lateral (Pass the Hash), y el forjado de tickets de autenticación maestra para el control completo del Active Directory (Golden Ticket Attack).
 
 ## Explotaciòn:
 
