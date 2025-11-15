@@ -27,60 +27,92 @@ tags:
 
 Este ejercicio simula un escenario de penetración en una infraestructura corporativa con una red altamente segmentada y una jerarquía de Active Directory (dominios Padre e Hijo). El ejercicio comienza con el acceso inicial a un sistema perimetral, para luego requerir el pivoteo de red a través de un túnel para acceder a la red interna y sus sistemas críticos. El objetivo final es la escalada de privilegios a nivel de dominio, aplicando técnicas de post-explotación como la extracción de credenciales (LSA Dump), el movimiento lateral (Pass the Hash), y el forjado de tickets de autenticación maestra para el control completo del Active Directory (Golden Ticket Attack).
 
-## Explotaciòn:
+## Diagrama de red:
 
-Para esta explotaciòn vamos a utilizar una maquina con sistema operativo Kali Linux. Como primera medida vamos a iniciar el anunsurf para manejar el anonimato.
+Visualización de la arquitectura de red con dos segmentos (externo e interno), el punto de pivote en el servidor inicial, y el objetivo final: el Controlador de Dominio Padre.
 
-• Anonsurf start
+![](/assets/images/activedirectory/dc_2.png)
 
-![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01602.png)
+## Descubrimiento:
 
-Realizamos la búsqueda den Censys de un sitio vulnerable.
+Se utiliza nmap para escanear el rango de la red externa (192.168.80.0/24) y descubrir hosts activos.
 
-• https://censys.io/
+• nmap -sn 192.168.80.0/24
+
+![](/assets/images/activedirectory/dc_2.png)
+
+Se realiza un escaneo detallado al host 192.168.80.10, revelando que el puerto 80 (HTTP) y el 22 (SSH) están abiertos.
+
+• nmap -sC -sV 192.168.80.10  
 
 ![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01603.png)
 
-Luego de detectar la dirección IP de una victima realizamos un escaneo con nmap vara validar si es vulnerable.
-
-• nmap -p 443 --script = ssl-heartbleed <URL> para HEARTBLEED
-
-• nmap -sV --version-light --script ssl-poodle -p 443 <URL> para POODLE
+Se accede al servidor web en 192.168.80.10 y se identifica la página de registro (Sign Up), necesaria para buscar el punto de entrada de la explotación.
 
 ![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
 
-Utilizamos un modulo axuliar de metasploit, ingresamos la ip, puerto y seleccionamos modo DUMP para extraer información de la memoria del sitio., finalmente ejecutamos el exploit.
+Tras registrar y autenticarse con credenciales aleatorias, se accede exitosamente al sitio el cual es una tienda.
 
-• msfconsole
+![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
 
-• usar auxiliar / escáner / ssl / openssl_heartbleed msf auxiliar
+Un campo interesante que encontramos fue el campo de correo electrónico del boletín.
 
-• set RHOSTS <IP O URL VICTIMA>
+![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
 
-• set RPORT 443
+Se utiliza Burp Suite para interceptar la solicitud POST del formulario y revisar el parámetro EMAIL.
 
-• set VERBOSE true
+![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
 
-• set action DUMP
+## Explotación:
 
-• exploit
+Al inyectar el comando cat /etc/passwd, el servidor ejecuta el RCE y devuelve el contenido del archivo, revelando el usuario privilege para el acceso inicial.
 
-![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01605.png)
+![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
 
-Observamos que nos trae 65 Kb de información de la memoria del sitio.
+Iniciamos sesión por ssh en la máquina, con las credenciales descubiertas en el Archivo “/etc/passwd”.
 
-![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01606.png)
+![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
 
-Cambiamos el modo de ataque para que nos extraiga claves que tenga y lo ejecutamos de nuevo.
+Dentro del servidor se obseran dos interfaces de red, confirmando acceso a una red interna (192.168.98.0/24).
 
-• set action KEYS
+![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
 
-![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01607.png)
+Se comprueba la existencia del directorio .mozilla/firefox en la máquina comprometida para buscar bases de datos de historial y marcadores que puedan contener credenciales.
+
+![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
+
+Usaremos sqlite3 para acceder a la base de datos de Firefox.
+
+![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
+
+Encontramos algunas credenciales interesantes en la base de datos de marcadores de Mozilla.
+
+![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
+
+## Pivote
+
+Tenemos que realizar el pivote ya que 192.168.98.0/24 no es accesible directamente de la red VPN. Utilizaremos ligalo-ng para lo mismo.
+
+![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
+
+Se transfiere y se ejecuta el agente de Ligolo-ng en el servidor, estableciendo la conexión y el túnel hacia la máquina atacante
+
+![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
+
+Se ejecuta el proxy de Ligolo-ng en la máquina atacante y se confirma que el agente se ha conectado exitosamente, listando la nueva sesión de túnel a través de 192.168.80.10.
+
+![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
+
+Se confirma que el túnel de Ligolo-ng está operativo al poder hacer ping a la red 192.168.98.0/24.
+
+![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01604.png)
 
 
-Finalmente bbtenemos la clave privada del sitio.
 
-![](/assets/images/vulnerabilidades/cve-2014-0160/cve-2014-01608.png)
+
+
+
+
 
 ## Referencias:
 
