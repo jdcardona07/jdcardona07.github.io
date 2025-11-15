@@ -1,6 +1,6 @@
 ---
 layout: single
-title: Comprometiendo el DC a través de un Pivote de Red - activedirectory
+title: Comprometiendo el controlador de dominio - activedirectory
 excerpt: "De la Explotación Web al Control del Directorio: El Camino Completo para un Ataque Golden Ticket"
 date: 2025-11-15
 classes: wide
